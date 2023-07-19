@@ -9,8 +9,10 @@
 <main id="app-wrapper">
 	<aside id="sidebar">
 		<header>
-			<img id="logo" src={logo} alt="logo" />
-			<span>{title}</span>
+			<a href="/">
+				<img id="logo" src={logo} alt="logo" />
+				<span>{title}</span>
+			</a>
 		</header>
 		<slot />
 	</aside>
@@ -27,7 +29,6 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: lemonchiffon;
 		display: flex;
 	}
 
@@ -36,12 +37,15 @@
 		height: 100%;
 		flex: 0 0 333px;
 		z-index: 1;
+		display: flex;
+		flex-flow: column nowrap;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
 	}
 
 	#sidebar header {
 		height: 60px;
-		padding: 0 20px;
+		flex: 0 0 60px;
+		padding: 0px;
 		display: flex;
 		align-items: center;
 		border-bottom: 1px solid #eee;
@@ -54,6 +58,14 @@
 		margin-top: 4px;
 		margin-left: 10px;
 		font-size: 0.7em;
+	}
+
+	#sidebar header a {
+		height: 100%;
+		padding: 0 20px;
+		display: flex;
+		align-items: center;
+		width: 100%;
 	}
 
 	#logo {

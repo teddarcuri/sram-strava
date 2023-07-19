@@ -1,14 +1,27 @@
 <script>
 	import { authStore } from '$lib/stores/auth';
 	import ConnectToStrava from '$lib/components/ConnectToStrava.svelte';
+	import ActivityList from '$lib/components/ActivityList.svelte';
+
+	export let data;
 
 	$: hasAuthToken = $authStore.strava.access_token;
+
+	console.log('TESTINNGG: ', data);
 </script>
 
-<div>
+<section>
 	{#if hasAuthToken}
-		<p>Logged in!</p>
+		<ActivityList activities={data.activities} />
 	{:else}
 		<ConnectToStrava />
 	{/if}
-</div>
+</section>
+
+<style>
+	section {
+		height: 100%;
+		flex: 1 1 100%;
+		overflow-y: auto;
+	}
+</style>
