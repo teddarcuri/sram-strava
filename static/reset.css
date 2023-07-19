@@ -1,0 +1,25 @@
+/* Reset box-sizing and margin/padding */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Remove list styles */
+ul,
+ol {
+	list-style: none;
+}
+
+/* Remove default anchor styles */
+a {
+	text-decoration: none;
+}
+
+/* Set a base font size and line height */
+html {
+	font-size: 16px;
+	line-height: 1.5;
+}
