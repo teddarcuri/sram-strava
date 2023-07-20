@@ -1,7 +1,7 @@
 import { authStore } from '$lib/stores/auth';
 import { get } from 'svelte/store';
 
-const PAGE_LIMIT = 8;
+const PAGE_LIMIT = 20;
 
 export async function getActivities() {
 	const strava_access_token = get(authStore).strava.access_token;

@@ -82,11 +82,13 @@
 			map.on('mouseenter', activityId, () => {
 				mapCanvas.style.cursor = 'pointer';
 				map.setPaintProperty(activityId, 'line-width', 12);
+				map.setPaintProperty(activityId, 'line-opacity', isActive ? 1 : 0.7);
 			});
 
 			map.on('mouseleave', activityId, () => {
 				mapCanvas.style.cursor = '';
 				map.setPaintProperty(activityId, 'line-width', isActive ? 10 : 4);
+				map.setPaintProperty(activityId, 'line-opacity', isActive ? 1 : 0.5);
 			});
 		});
 	}
