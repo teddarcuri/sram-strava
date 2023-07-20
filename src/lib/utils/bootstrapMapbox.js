@@ -11,7 +11,7 @@ export default async () => {
 		container: 'map',
 		style: 'mapbox://styles/mapbox/satellite-streets-v11',
 		projection: 'globe',
-		zoom: 6.6,
+		zoom: 3.6,
 		bearing: 0,
 		center: [-99.94373365867199, 43.495094628394924],
 		pitch: 45

@@ -1,8 +1,12 @@
 <script>
 	import { onMount, setContext } from 'svelte';
+	import { activitiesStore } from '$lib/stores/activities';
 	import bootstrapMapbox from '$lib/utils/bootstrapMapbox';
+	import MapboxActivities from './MapboxActivities.svelte';
 
 	let map;
+
+	$: activites = $activitiesStore.activities;
 
 	onMount(async () => {
 		map = await bootstrapMapbox();
@@ -12,6 +16,9 @@
 </script>
 
 <div id="map" />
+{#if map && activites.length}
+	<MapboxActivities />
+{/if}
 
 <style>
 	#map {
