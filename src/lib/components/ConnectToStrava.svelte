@@ -22,7 +22,6 @@
 
 <style>
 	section {
-		height: 100%;
 		padding: 50px;
 		display: flex;
 		background: #fff;

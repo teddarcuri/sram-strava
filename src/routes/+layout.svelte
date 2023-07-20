@@ -37,8 +37,6 @@
 		height: 100%;
 		flex: 0 0 333px;
 		z-index: 1;
-		display: flex;
-		flex-flow: column nowrap;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
 	}
 
