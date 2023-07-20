@@ -1,9 +1,14 @@
 <script>
 	import '$lib/styles/reset.css';
 	import '$lib/styles/global.css';
+	import { authStore } from '$lib/stores/auth';
 	import logo from '$lib/assets/logo.png';
 	import background from '$lib/assets/eagle-bg-horizon.png';
+	import Mapbox from '$lib/components/Mapbox.svelte';
+
 	const title = '+Strava';
+
+	$: hasAuthToken = $authStore.strava.access_token;
 </script>
 
 <main id="app-wrapper">
@@ -16,9 +21,11 @@
 		</header>
 		<slot />
 	</aside>
-	<section id="map">
+	<section id="map-wrapper">
+		{#if hasAuthToken}
+			<Mapbox />
+		{/if}
 		<img src={background} id="map-bg" />
-		<slot name="map" />
 	</section>
 </main>
 
@@ -70,8 +77,7 @@
 		width: 120px;
 	}
 
-	#map {
-		background: #eee;
+	#map-wrapper {
 		flex: 1;
 		height: 100%;
 		position: relative;
@@ -84,5 +90,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		z-index: 0;
 	}
 </style>

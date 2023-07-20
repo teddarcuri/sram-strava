@@ -6,8 +6,6 @@
 	export let data;
 
 	$: hasAuthToken = $authStore.strava.access_token;
-
-	console.log('TESTINNGG: ', data);
 </script>
 
 <section>
