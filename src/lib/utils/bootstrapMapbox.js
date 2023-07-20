@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import { mapStore } from '$lib/stores/map';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { PUBLIC_MAPBOX_ACCESS_TOKEN } from '$env/static/public';
 
@@ -16,6 +17,8 @@ export default async () => {
 		center: [-99.94373365867199, 43.495094628394924],
 		pitch: 45
 	});
+
+	mapStore.set({ map });
 
 	map.on('styledata', () => {
 		// create DEM source

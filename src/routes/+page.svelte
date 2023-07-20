@@ -2,7 +2,6 @@
 	import { authStore } from '$lib/stores/auth';
 	import ConnectToStrava from '$lib/components/ConnectToStrava.svelte';
 	import ActivityList from '$lib/components/ActivityList.svelte';
-
 	export let data;
 
 	$: hasAuthToken = $authStore.strava.access_token;
