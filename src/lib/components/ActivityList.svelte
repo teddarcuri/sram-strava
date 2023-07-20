@@ -1,23 +1,18 @@
 <script>
-	import { mapStore } from '$lib/stores/map';
-	import { get } from 'svelte/store';
+	import { activitiesStore } from '$lib/stores/activities';
 	import mpsToMph from '$lib/utils/mpsToMph';
 	import metersToMiles from '$lib/utils/metersToMiles';
 	import secondsToHours from '$lib/utils/secondsToHours';
 	import focusIcon from '$lib/assets/focus.png';
 
 	export let activities;
-	$: map = get(mapStore).map;
+	export let activeActivity;
 
-	function flyMapToStartLocation(activity) {
-		if (!map) return;
-
-		map.flyTo({
-			center: [activity.start_latlng[1], activity.start_latlng[0]],
-			zoom: 12,
-			speed: 1.5,
-			curve: 1
-		});
+	function setActive(activity) {
+		activitiesStore.update((s) => ({
+			...s,
+			activeActivity: activity
+		}));
 	}
 </script>
 
@@ -26,13 +21,12 @@
 		<p>No activities found</p>
 	{:else}
 		{#each activities as activity}
-			<div class="activity">
-				<button on:click={() => flyMapToStartLocation(activity)} class="focus-icon">
+			<div class:active={activeActivity && activeActivity.id === activity.id} class="activity">
+				<button on:click={() => setActive(activity)} class="focus-icon">
 					<img src={focusIcon} />
 				</button>
 				<h2>{activity.name}</h2>
 				<h5>{activity.type}</h5>
-				<!-- <pre>{JSON.stringify(activity, null, 2)}</pre> -->
 				<div class="three-col">
 					<div class="col">
 						<h3>Total Time</h3>
@@ -101,5 +95,9 @@
 		font-size: 12px;
 		border: solid 1px #eee;
 		box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.5);
+	}
+
+	.active {
+		border: solid var(--sram-red) 1px;
 	}
 </style>

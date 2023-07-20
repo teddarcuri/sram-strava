@@ -7,6 +7,7 @@
 	let map;
 
 	$: activites = $activitiesStore.activities;
+	$: activeActivity = $activitiesStore.activeActivity;
 
 	onMount(async () => {
 		map = await bootstrapMapbox();
@@ -17,7 +18,7 @@
 
 <div id="map" />
 {#if map && activites.length}
-	<MapboxActivities />
+	<MapboxActivities {activeActivity} />
 {/if}
 
 <style>
